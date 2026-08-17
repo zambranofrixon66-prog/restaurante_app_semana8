@@ -8,18 +8,21 @@
 
 ## Descripción del proyecto
 
-Este proyecto consiste en el desarrollo de un sistema de restaurante utilizando Programación Orientada a Objetos en Python. El programa permite registrar productos, bebidas y clientes mediante un menú interactivo en la consola. Además, utiliza una estructura modular y aplica principios SOLID para mantener un código organizado, reutilizable y fácil de mantener.
+Este proyecto presenta un sistema básico para administrar los productos y usuarios de un restaurante. Fue desarrollado con Programación Orientada a Objetos en Python y funciona mediante un menú interactivo en la consola.
+
+El sistema permite registrar, buscar, actualizar, eliminar y listar productos. También permite registrar usuarios, consultar la lista de usuarios y mostrar las categorías únicas utilizadas.
 
 ---
 
 ## Estructura del proyecto
 
-```
+```text
 restaurante_app/
 │
 ├── modelos/
 │   ├── __init__.py
 │   ├── producto.py
+│   ├── usuario.py
 │   ├── bebida.py
 │   └── cliente.py
 │
@@ -28,83 +31,109 @@ restaurante_app/
 │   └── restaurante.py
 │
 ├── main.py
+├── .gitignore
 └── README.md
 ```
 
+Los archivos `bebida.py` y `cliente.py` se conservan como parte del trabajo realizado en las semanas anteriores.
+
 ---
 
-## Responsabilidad de cada clase
+## Responsabilidad de los componentes
 
 ### Producto
-Representa la información general de un producto del restaurante, incluyendo su código, nombre, categoría y precio.
 
-### Bebida
-Hereda de la clase `Producto` y agrega el atributo correspondiente al tamaño o presentación de la bebida. También reutiliza el método para mostrar la información del producto.
+Representa un producto del restaurante y almacena su código, nombre, categoría y precio.
 
-### Cliente
-Representa a un cliente del restaurante y almacena su identificación, nombre y correo electrónico.
+### Usuario
+
+Representa a una persona registrada en el sistema. Guarda su identificación, nombre y correo electrónico.
 
 ### Restaurante
-Administra el sistema. Se encarga de registrar productos y clientes, validar que no existan códigos o identificaciones repetidas y mostrar la información almacenada.
+
+Administra las colecciones de productos y usuarios. Contiene las operaciones de registro, búsqueda, actualización, eliminación y listado.
 
 ### main.py
-Contiene el menú principal del programa, solicita los datos al usuario y permite interactuar con todas las funciones del sistema.
+
+Es el punto de inicio del programa. Presenta el menú, solicita los datos y llama a los métodos de la clase `Restaurante`.
 
 ---
 
-## Relación entre Producto y Bebida
+## Estructuras de datos utilizadas
 
-La clase **Bebida** hereda de la clase **Producto**, ya que una bebida también es un producto del restaurante. Gracias a la herencia se reutilizan atributos y métodos, evitando repetir código y facilitando el mantenimiento del programa.
+### Lista
 
----
+Se utilizan listas para almacenar los productos y usuarios porque permiten agregar y eliminar objetos durante la ejecución del programa.
 
-## Principios SOLID aplicados
+### Tupla
 
-### SRP (Single Responsibility Principle)
-Cada clase tiene una única responsabilidad. Producto administra los datos de un producto, Cliente la información del cliente y Restaurante controla la administración del sistema.
+Se utiliza una tupla para guardar las categorías permitidas: entrada, plato fuerte, postre y bebida. Esta información se mantiene estable durante la ejecución.
 
-### OCP (Open/Closed Principle)
-El sistema permite agregar nuevos tipos de productos mediante herencia sin modificar la clase Producto.
+### Diccionario
 
-### LSP (Liskov Substitution Principle)
-Una instancia de la clase Bebida puede utilizarse como si fuera un Producto sin afectar el funcionamiento del programa.
+Se utiliza un diccionario para relacionar el código de cada producto con su objeto. Esto permite buscar productos rápidamente mediante su código.
+
+### Conjunto
+
+Se utilizan conjuntos para almacenar categorías únicas y evitar identificaciones de usuarios duplicadas.
 
 ---
 
 ## Funcionalidades
 
 - Registrar productos.
-- Registrar bebidas.
-- Registrar clientes.
-- Listar productos registrados.
-- Listar clientes registrados.
-- Validar códigos de productos duplicados.
-- Validar identificaciones de clientes duplicadas.
-- Menú interactivo mediante consola.
+- Buscar productos mediante su código.
+- Actualizar productos.
+- Eliminar productos.
+- Listar los productos registrados.
+- Registrar usuarios.
+- Listar los usuarios registrados.
+- Evitar códigos de productos duplicados.
+- Evitar identificaciones de usuarios duplicadas.
+- Mostrar las categorías únicas de los productos.
+- Validar que los campos no estén vacíos.
+- Validar que el precio sea numérico y mayor que cero.
+- Mostrar un menú interactivo en la consola.
+
+---
+
+## Menú del sistema
+
+```text
+1. Registrar producto
+2. Buscar producto
+3. Actualizar producto
+4. Eliminar producto
+5. Listar productos
+6. Registrar usuario
+7. Listar usuarios
+8. Mostrar categorías
+9. Salir
+```
 
 ---
 
 ## Requisitos
 
 - Python 3.10 o superior.
-- Visual Studio Code (opcional).
+- Visual Studio Code o cualquier editor compatible con Python.
 
 ---
 
 ## Ejecución del proyecto
 
-1. Abrir la carpeta del proyecto en Visual Studio Code.
-2. Abrir una terminal.
+1. Abrir la carpeta del proyecto.
+2. Abrir una terminal en la carpeta principal.
 3. Ejecutar el siguiente comando:
 
 ```bash
 python main.py
 ```
 
-4. Seleccionar una opción del menú para registrar o consultar la información.
+4. Seleccionar una opción del menú y seguir las indicaciones mostradas en la consola.
 
 ---
 
 ## Conclusión
 
-El desarrollo de este proyecto permitió aplicar los conceptos fundamentales de Programación Orientada a Objetos utilizando clases, herencia, encapsulamiento y polimorfismo. Además, la implementación de los principios SOLID contribuyó a obtener un código más organizado, reutilizable y fácil de mantener, demostrando la importancia de una buena estructura para el desarrollo de aplicaciones.
+Esta actividad permitió mejorar el sistema del restaurante mediante el uso de listas, tuplas, diccionarios y conjuntos. Cada estructura cumple una función específica y ayuda a organizar la información de manera sencilla. Además, la separación entre modelos, servicios y el archivo principal mantiene el código ordenado y facilita su mantenimiento.
